@@ -496,84 +496,61 @@ footer{padding:35px 0 46px;border-top:1px solid rgba(255,255,255,.62);color:var(
 </style>
 
 <style id="premium-resume-viewer-css">
-/* Premium floating transparent-glass resume viewer. Loads only the current external resume.pdf. */
+/* Floating white/transparent glass resume viewer — external resume.pdf only. */
 .resume-modal{
-  position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
-  padding:20px;
+  position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:18px;
   background:
-    radial-gradient(circle at 10% 8%,rgba(255,255,255,.46),transparent 30%),
-    radial-gradient(circle at 88% 10%,rgba(236,205,108,.20),transparent 26%),
-    radial-gradient(circle at 50% 100%,rgba(179,210,235,.20),transparent 38%),
-    rgba(242,247,251,.12);
-  backdrop-filter:blur(22px) saturate(145%);-webkit-backdrop-filter:blur(22px) saturate(145%);
+    radial-gradient(circle at 12% 12%,rgba(255,255,255,.52),transparent 32%),
+    radial-gradient(circle at 88% 14%,rgba(246,218,137,.18),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(188,220,244,.22),transparent 42%),
+    rgba(246,250,253,.20);
+  backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);
 }
 .resume-modal.is-open{display:flex}
-.resume-modal-backdrop{
-  position:absolute;inset:0;cursor:pointer;
-  background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
-}
+.resume-modal-backdrop{position:absolute;inset:0;cursor:pointer;background:rgba(255,255,255,.06)}
 .resume-modal-panel{
-  position:relative;z-index:1;width:min(1220px,96vw);height:min(95vh,1120px);
-  display:flex;flex-direction:column;overflow:hidden;border-radius:30px;
-  border:1px solid rgba(255,255,255,.78);
-  background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.10));
-  box-shadow:0 35px 100px rgba(57,76,96,.18),0 10px 40px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.88),inset 0 -1px 0 rgba(255,255,255,.20);
-  backdrop-filter:blur(26px) saturate(155%);-webkit-backdrop-filter:blur(26px) saturate(155%);
+  position:relative;z-index:1;width:min(1220px,96vw);height:min(95vh,1120px);display:flex;flex-direction:column;overflow:hidden;border-radius:30px;
+  border:1px solid rgba(255,255,255,.82);
+  background:linear-gradient(145deg,rgba(255,255,255,.48),rgba(255,255,255,.22));
+  box-shadow:0 32px 90px rgba(67,91,112,.16),0 8px 34px rgba(255,255,255,.34),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.30);
+  backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);
 }
-.resume-modal-panel:before{
-  content:"";position:absolute;left:7%;right:7%;top:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,158,44,.55),rgba(255,255,255,.92),rgba(201,158,44,.55),transparent);
-  pointer-events:none;z-index:4;
-}
+.resume-modal-panel:before{content:"";position:absolute;left:7%;right:7%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(197,154,37,.42),rgba(255,255,255,.98),rgba(197,154,37,.42),transparent);pointer-events:none;z-index:4}
 .resume-modal-head{
-  position:relative;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:12px 18px 12px 24px;border-bottom:1px solid rgba(255,255,255,.40);
-  background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,.08));
-  box-shadow:0 10px 28px rgba(84,101,120,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  position:relative;min-height:68px;display:flex;align-items:center;justify-content:flex-start;padding:13px 24px;
+  border-bottom:1px solid rgba(255,255,255,.50);background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.13));
+  box-shadow:0 10px 28px rgba(84,101,120,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
 }
-.resume-modal-title-wrap{display:flex;align-items:center;gap:13px;min-width:0}
-.resume-modal-head h2{
-  margin:0;color:#172b42!important;font-size:16px!important;font-weight:900!important;letter-spacing:.01em;line-height:1.2;
-  text-shadow:0 1px 12px rgba(255,255,255,.82);
-}
-.resume-modal-subtitle{display:block;margin-top:4px;color:#51677d;font-size:10px;font-weight:800;letter-spacing:.13em}
-.resume-close{
-  width:42px;height:42px;flex:0 0 42px;border:1px solid rgba(41,59,79,.14);border-radius:50%;
-  background:rgba(255,255,255,.26);color:#31465d;font-size:25px;line-height:1;cursor:pointer;transition:.2s ease;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.88),0 8px 22px rgba(70,88,108,.09);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
-}
-.resume-close:hover{transform:translateY(-1px) scale(1.04);border-color:rgba(191,151,45,.58);background:rgba(255,248,205,.42);color:#73520a;box-shadow:0 10px 28px rgba(181,142,39,.16)}
+.resume-modal-title-wrap{display:flex;align-items:center;min-width:0}
+.resume-modal-head h2{margin:0;color:#17304a!important;font-size:16px!important;font-weight:900!important;letter-spacing:.01em;line-height:1.2;text-shadow:0 1px 12px rgba(255,255,255,.86)}
+.resume-modal-subtitle{display:block;margin-top:4px;color:#536b82;font-size:10px;font-weight:800;letter-spacing:.13em}
 .resume-viewer-body{
-  flex:1;min-height:0;overflow:auto;padding:26px 22px 34px;
+  flex:1;min-height:0;overflow:auto;padding:22px 20px 28px;
   background:
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.28),transparent 34%),
-    radial-gradient(circle at 5% 50%,rgba(205,224,240,.16),transparent 30%),
-    rgba(255,255,255,.06);
-  scrollbar-width:thin;scrollbar-color:rgba(190,150,42,.64) rgba(255,255,255,.18);-webkit-overflow-scrolling:touch;
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.30),transparent 34%),
+    radial-gradient(circle at 4% 55%,rgba(210,230,243,.18),transparent 32%),
+    rgba(255,255,255,.10);
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.52) transparent;-webkit-overflow-scrolling:touch;
 }
-.resume-viewer-body::-webkit-scrollbar{width:11px}
-.resume-viewer-body::-webkit-scrollbar-track{background:rgba(255,255,255,.14);border-radius:12px}
-.resume-viewer-body::-webkit-scrollbar-thumb{background:linear-gradient(#f1da8b,#b9841d);border-radius:12px;border:2px solid rgba(255,255,255,.30)}
-.resume-frame-shell{
-  width:min(1000px,100%);height:calc(100% - 2px);min-height:720px;margin:0 auto;
-  border:1px solid rgba(255,255,255,.82);border-radius:22px;overflow:hidden;
-  background:rgba(255,255,255,.16);
-  box-shadow:0 28px 70px rgba(70,87,105,.15),0 0 0 1px rgba(194,154,50,.08),inset 0 1px 0 rgba(255,255,255,.92);
-  backdrop-filter:blur(14px) saturate(130%);-webkit-backdrop-filter:blur(14px) saturate(130%);
-}
-.resume-frame{
-  width:100%;height:100%;min-height:720px;display:block;border:0;background:transparent;
-}
-.resume-viewer-foot{text-align:center;margin-top:18px;color:#5c7186;font-size:10px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;text-shadow:0 1px 7px rgba(255,255,255,.65)}
+.resume-viewer-body::-webkit-scrollbar{width:8px;height:8px}
+.resume-viewer-body::-webkit-scrollbar-track{background:transparent;border:0}
+.resume-viewer-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.48);border-radius:20px;border:1px solid rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.70),0 2px 10px rgba(90,111,130,.08)}
+.resume-viewer-body::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.66)}
+.resume-viewer-body::-webkit-scrollbar-corner{background:transparent}
+.resume-pages{width:min(1000px,100%);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px}
+.resume-page-shell{width:100%;border:1px solid rgba(255,255,255,.88);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.76);box-shadow:0 26px 64px rgba(63,83,102,.15),0 0 0 1px rgba(194,154,50,.06),inset 0 1px 0 rgba(255,255,255,.98);position:relative}
+.resume-page-canvas{display:block;width:100%;height:auto;background:#fff}
+.resume-loading{min-height:520px;display:flex;align-items:center;justify-content:center;padding:40px;color:#536b82;font-size:12px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;text-align:center;background:rgba(255,255,255,.62)}
+.resume-error{min-height:220px;display:flex;align-items:center;justify-content:center;padding:30px;color:#536b82;font-size:12px;font-weight:700;text-align:center;background:rgba(255,255,255,.62)}
+.resume-viewer-foot{text-align:center;margin-top:18px;color:#60758a;font-size:10px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;text-shadow:0 1px 7px rgba(255,255,255,.75)}
 .resume-viewer-foot span{color:#9b7113}
 body.resume-lock{overflow:hidden}
-@media (max-width:700px){
+@media(max-width:700px){
   .resume-modal{padding:7px}.resume-modal-panel{width:100%;height:98vh;border-radius:20px}
-  .resume-modal-head{min-height:64px;padding:10px 11px 10px 16px}.resume-modal-head h2{font-size:13px!important}.resume-modal-subtitle{font-size:8px;letter-spacing:.08em}.resume-close{width:37px;height:37px;flex-basis:37px;font-size:22px}
-  .resume-viewer-body{padding:12px 8px 20px}.resume-frame-shell{min-height:calc(100vh - 150px);height:calc(100% - 1px);border-radius:16px}.resume-frame{min-height:calc(100vh - 150px)}
-  .resume-viewer-foot{margin-top:13px;font-size:8px}
+  .resume-modal-head{min-height:62px;padding:10px 16px}.resume-modal-head h2{font-size:13px!important}.resume-modal-subtitle{font-size:8px;letter-spacing:.08em}
+  .resume-viewer-body{padding:12px 8px 20px}.resume-pages{gap:16px}.resume-page-shell{border-radius:14px}.resume-viewer-foot{margin-top:13px;font-size:8px}
 }
-@media (prefers-reduced-motion:reduce){.resume-close{transition:none}}
+@media(prefers-reduced-motion:reduce){.resume-modal-panel,.resume-page-shell{transition:none!important}}
 </style>
 
 </head>
@@ -835,7 +812,7 @@ document.addEventListener('keydown', e => {
 });
 </script>
 
-  <!-- Resume viewer: loads the current resume.pdf only; no old resume is embedded. -->
+  <!-- Resume viewer: renders the current external resume.pdf as pages; no resume data is embedded here. -->
   <div class="resume-modal" id="resumeViewer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resumeViewerTitle">
     <div class="resume-modal-backdrop" data-resume-close></div>
     <div class="resume-modal-panel">
@@ -846,21 +823,12 @@ document.addEventListener('keydown', e => {
             <span class="resume-modal-subtitle">FULL RESUME · VIEW ONLY</span>
           </div>
         </div>
-        <button class="resume-close" type="button" aria-label="Close resume viewer" data-resume-close>&times;</button>
       </div>
       <div class="resume-viewer-body" id="resumeViewerBody">
-        <div class="resume-frame-shell">
-          <iframe
-            class="resume-frame"
-            id="resumeFrame"
-            title="T.J. Gogul Kumar full resume"
-            src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-            loading="eager"
-            referrerpolicy="no-referrer"
-            oncontextmenu="return false;">
-          </iframe>
+        <div class="resume-pages" id="resumePages" aria-live="polite">
+          <div class="resume-loading" id="resumeLoading">Loading resume…</div>
         </div>
-        <div class="resume-viewer-foot"><span>VIEW ONLY</span> · Scroll inside the viewer to see the complete resume</div>
+        <div class="resume-viewer-foot"><span>VIEW ONLY</span> · Scroll to see the complete resume</div>
       </div>
     </div>
   </div>
@@ -869,7 +837,64 @@ document.addEventListener('keydown', e => {
 (function(){
   const modal=document.getElementById('resumeViewer');
   const openBtn=document.getElementById('resumeViewBtn');
-  if(!modal||!openBtn) return;
+  const pages=document.getElementById('resumePages');
+  const loading=document.getElementById('resumeLoading');
+  const resumeUrl='resume.pdf';
+  if(!modal||!openBtn||!pages) return;
+
+  let loaded=false;
+  let loadingPromise=null;
+
+  const showError=(message)=>{
+    pages.innerHTML='<div class="resume-error">'+message+'</div>';
+  };
+
+  const renderResume=async()=>{
+    if(loaded) return;
+    if(loadingPromise) return loadingPromise;
+    loadingPromise=(async()=>{
+      try{
+        if(!window.pdfjsLib){
+          const script=document.createElement('script');
+          script.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+          script.async=true;
+          await new Promise((resolve,reject)=>{script.onload=resolve;script.onerror=()=>reject(new Error('PDF viewer library could not be loaded.'));document.head.appendChild(script);});
+        }
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        const pdf=await window.pdfjsLib.getDocument({url:resumeUrl,withCredentials:false}).promise;
+        pages.innerHTML='';
+        for(let pageNumber=1;pageNumber<=pdf.numPages;pageNumber++){
+          const page=await pdf.getPage(pageNumber);
+          const base=page.getViewport({scale:1});
+          const maxWidth=Math.min(980,pages.clientWidth||980);
+          const scale=maxWidth/base.width;
+          const viewport=page.getViewport({scale});
+          const shell=document.createElement('div');
+          shell.className='resume-page-shell';
+          shell.setAttribute('aria-label','Resume page '+pageNumber);
+          const canvas=document.createElement('canvas');
+          canvas.className='resume-page-canvas';
+          canvas.width=Math.ceil(viewport.width);
+          canvas.height=Math.ceil(viewport.height);
+          canvas.style.width='100%';
+          canvas.style.height='auto';
+          canvas.oncontextmenu=()=>false;
+          shell.appendChild(canvas);
+          pages.appendChild(shell);
+          const ctx=canvas.getContext('2d',{alpha:false});
+          await page.render({canvasContext:ctx,viewport:viewport}).promise;
+        }
+        loaded=true;
+      }catch(err){
+        console.error('Resume viewer error:',err);
+        showError('The resume could not be displayed. Please refresh the page and try again.');
+      }finally{
+        loadingPromise=null;
+      }
+    })();
+    return loadingPromise;
+  };
+
   const close=()=>{
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden','true');
@@ -880,12 +905,15 @@ document.addEventListener('keydown', e => {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('resume-lock');
+    renderResume();
   };
+
   openBtn.addEventListener('click',e=>{e.preventDefault();open();});
-  modal.querySelectorAll('[data-resume-close]').forEach(el=>el.addEventListener('click',close));
+  modal.querySelector('[data-resume-close]').addEventListener('click',close);
   document.addEventListener('keydown',e=>{
-    if(modal.classList.contains('is-open') && e.key==='Escape') close();
-    if(modal.classList.contains('is-open') && (e.ctrlKey||e.metaKey) && ['s','p','u'].includes(e.key.toLowerCase())) e.preventDefault();
+    if(!modal.classList.contains('is-open')) return;
+    if(e.key==='Escape'){close();return;}
+    if((e.ctrlKey||e.metaKey)&&['s','p','u'].includes(e.key.toLowerCase())) e.preventDefault();
   });
   modal.addEventListener('contextmenu',e=>e.preventDefault());
   modal.addEventListener('dragstart',e=>e.preventDefault());
