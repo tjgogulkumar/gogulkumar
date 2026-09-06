@@ -494,6 +494,88 @@ footer{padding:35px 0 46px;border-top:1px solid rgba(255,255,255,.62);color:var(
 }
 
 </style>
+
+<style id="premium-resume-viewer-css">
+/* Premium floating transparent-glass resume viewer. Loads only the current external resume.pdf. */
+.resume-modal{
+  position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at 10% 8%,rgba(255,255,255,.46),transparent 30%),
+    radial-gradient(circle at 88% 10%,rgba(236,205,108,.20),transparent 26%),
+    radial-gradient(circle at 50% 100%,rgba(179,210,235,.20),transparent 38%),
+    rgba(242,247,251,.12);
+  backdrop-filter:blur(22px) saturate(145%);-webkit-backdrop-filter:blur(22px) saturate(145%);
+}
+.resume-modal.is-open{display:flex}
+.resume-modal-backdrop{
+  position:absolute;inset:0;cursor:pointer;
+  background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
+}
+.resume-modal-panel{
+  position:relative;z-index:1;width:min(1220px,96vw);height:min(95vh,1120px);
+  display:flex;flex-direction:column;overflow:hidden;border-radius:30px;
+  border:1px solid rgba(255,255,255,.78);
+  background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.10));
+  box-shadow:0 35px 100px rgba(57,76,96,.18),0 10px 40px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.88),inset 0 -1px 0 rgba(255,255,255,.20);
+  backdrop-filter:blur(26px) saturate(155%);-webkit-backdrop-filter:blur(26px) saturate(155%);
+}
+.resume-modal-panel:before{
+  content:"";position:absolute;left:7%;right:7%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,158,44,.55),rgba(255,255,255,.92),rgba(201,158,44,.55),transparent);
+  pointer-events:none;z-index:4;
+}
+.resume-modal-head{
+  position:relative;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:12px 18px 12px 24px;border-bottom:1px solid rgba(255,255,255,.40);
+  background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,.08));
+  box-shadow:0 10px 28px rgba(84,101,120,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.resume-modal-title-wrap{display:flex;align-items:center;gap:13px;min-width:0}
+.resume-modal-head h2{
+  margin:0;color:#172b42!important;font-size:16px!important;font-weight:900!important;letter-spacing:.01em;line-height:1.2;
+  text-shadow:0 1px 12px rgba(255,255,255,.82);
+}
+.resume-modal-subtitle{display:block;margin-top:4px;color:#51677d;font-size:10px;font-weight:800;letter-spacing:.13em}
+.resume-close{
+  width:42px;height:42px;flex:0 0 42px;border:1px solid rgba(41,59,79,.14);border-radius:50%;
+  background:rgba(255,255,255,.26);color:#31465d;font-size:25px;line-height:1;cursor:pointer;transition:.2s ease;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.88),0 8px 22px rgba(70,88,108,.09);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+}
+.resume-close:hover{transform:translateY(-1px) scale(1.04);border-color:rgba(191,151,45,.58);background:rgba(255,248,205,.42);color:#73520a;box-shadow:0 10px 28px rgba(181,142,39,.16)}
+.resume-viewer-body{
+  flex:1;min-height:0;overflow:auto;padding:26px 22px 34px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.28),transparent 34%),
+    radial-gradient(circle at 5% 50%,rgba(205,224,240,.16),transparent 30%),
+    rgba(255,255,255,.06);
+  scrollbar-width:thin;scrollbar-color:rgba(190,150,42,.64) rgba(255,255,255,.18);-webkit-overflow-scrolling:touch;
+}
+.resume-viewer-body::-webkit-scrollbar{width:11px}
+.resume-viewer-body::-webkit-scrollbar-track{background:rgba(255,255,255,.14);border-radius:12px}
+.resume-viewer-body::-webkit-scrollbar-thumb{background:linear-gradient(#f1da8b,#b9841d);border-radius:12px;border:2px solid rgba(255,255,255,.30)}
+.resume-frame-shell{
+  width:min(1000px,100%);height:calc(100% - 2px);min-height:720px;margin:0 auto;
+  border:1px solid rgba(255,255,255,.82);border-radius:22px;overflow:hidden;
+  background:rgba(255,255,255,.16);
+  box-shadow:0 28px 70px rgba(70,87,105,.15),0 0 0 1px rgba(194,154,50,.08),inset 0 1px 0 rgba(255,255,255,.92);
+  backdrop-filter:blur(14px) saturate(130%);-webkit-backdrop-filter:blur(14px) saturate(130%);
+}
+.resume-frame{
+  width:100%;height:100%;min-height:720px;display:block;border:0;background:transparent;
+}
+.resume-viewer-foot{text-align:center;margin-top:18px;color:#5c7186;font-size:10px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;text-shadow:0 1px 7px rgba(255,255,255,.65)}
+.resume-viewer-foot span{color:#9b7113}
+body.resume-lock{overflow:hidden}
+@media (max-width:700px){
+  .resume-modal{padding:7px}.resume-modal-panel{width:100%;height:98vh;border-radius:20px}
+  .resume-modal-head{min-height:64px;padding:10px 11px 10px 16px}.resume-modal-head h2{font-size:13px!important}.resume-modal-subtitle{font-size:8px;letter-spacing:.08em}.resume-close{width:37px;height:37px;flex-basis:37px;font-size:22px}
+  .resume-viewer-body{padding:12px 8px 20px}.resume-frame-shell{min-height:calc(100vh - 150px);height:calc(100% - 1px);border-radius:16px}.resume-frame{min-height:calc(100vh - 150px)}
+  .resume-viewer-foot{margin-top:13px;font-size:8px}
+}
+@media (prefers-reduced-motion:reduce){.resume-close{transition:none}}
+</style>
+
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -517,7 +599,7 @@ footer{padding:35px 0 46px;border-top:1px solid rgba(255,255,255,.62);color:var(
       <p class="hero-sub">Motivated and adaptable finance student seeking an opportunity in Financial Analysis to apply practical skills in finance and data analytics. A quick learner with a strong willingness to contribute and work effectively as part of a team.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#experience">View Experience</a>
-        <a class="btn btn-secondary" href="resume.pdf" download="TJ_Gogul_Kumar_Resume.pdf">View Resume</a>
+        <a class="btn btn-secondary" href="#resumeViewer" id="resumeViewBtn" aria-label="View resume only">View Resume</a>
       </div>
     </div>
     <aside class="hero-card reveal">
@@ -751,6 +833,63 @@ document.addEventListener('keydown', e => {
     modalImage.src = '';
   }
 });
+</script>
+
+  <!-- Resume viewer: loads the current resume.pdf only; no old resume is embedded. -->
+  <div class="resume-modal" id="resumeViewer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resumeViewerTitle">
+    <div class="resume-modal-backdrop" data-resume-close></div>
+    <div class="resume-modal-panel">
+      <div class="resume-modal-head">
+        <div class="resume-modal-title-wrap">
+          <div>
+            <h2 id="resumeViewerTitle">T.J. Gogul Kumar — Resume</h2>
+            <span class="resume-modal-subtitle">FULL RESUME · VIEW ONLY</span>
+          </div>
+        </div>
+        <button class="resume-close" type="button" aria-label="Close resume viewer" data-resume-close>&times;</button>
+      </div>
+      <div class="resume-viewer-body" id="resumeViewerBody">
+        <div class="resume-frame-shell">
+          <iframe
+            class="resume-frame"
+            id="resumeFrame"
+            title="T.J. Gogul Kumar full resume"
+            src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+            loading="eager"
+            referrerpolicy="no-referrer"
+            oncontextmenu="return false;">
+          </iframe>
+        </div>
+        <div class="resume-viewer-foot"><span>VIEW ONLY</span> · Scroll inside the viewer to see the complete resume</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const modal=document.getElementById('resumeViewer');
+  const openBtn=document.getElementById('resumeViewBtn');
+  if(!modal||!openBtn) return;
+  const close=()=>{
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('resume-lock');
+    openBtn.focus();
+  };
+  const open=()=>{
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('resume-lock');
+  };
+  openBtn.addEventListener('click',e=>{e.preventDefault();open();});
+  modal.querySelectorAll('[data-resume-close]').forEach(el=>el.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{
+    if(modal.classList.contains('is-open') && e.key==='Escape') close();
+    if(modal.classList.contains('is-open') && (e.ctrlKey||e.metaKey) && ['s','p','u'].includes(e.key.toLowerCase())) e.preventDefault();
+  });
+  modal.addEventListener('contextmenu',e=>e.preventDefault());
+  modal.addEventListener('dragstart',e=>e.preventDefault());
+})();
 </script>
 </body>
 </html>
